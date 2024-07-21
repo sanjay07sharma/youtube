@@ -1,9 +1,8 @@
-import React from 'react'
 
 const SideBar = () => {
   return (
     <div>
-      SideBar
+        Sidebar
     </div>
   )
 }
