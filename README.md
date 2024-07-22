@@ -90,3 +90,25 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Video page
     - like, subscribe, share buttons
     - comments
+
+### Setup redux store
+
+- Install `@reduxjs/toolkit`.
+- Intstall `react-redux`.
+- Configure store -> `ConfigureStore({})` that comes from `@reduxjs/toolkit`.
+- Create slice -> `CreateSlice({
+        name: "sliceName",
+        initialState: {
+            varable:value,
+        }
+        reducers:{
+            method: (state) => {
+                operation
+            }
+        }
+    })
+
+    export default slice.reducer;
+    export const { method } = slice.actions;
+    `
+- Provide store to our App.js -> `<Provider store={store}></Provider>`
