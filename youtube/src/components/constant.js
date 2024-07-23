@@ -3,3 +3,11 @@ export const HAMBURGER_IMAGE_URL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 export const YOUTUBE_LOGO_URL = "https://1000logos.net/wp-content/uploads/2017/05/Youtube-logo.jpg";
 
 export const USER_IMAGE_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTalURue8uREswsyHXvJ9qmw4TSZqCxIEQNjg&s";
+
+export const HOME_ICON = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpA2t5V0F8Fu1B1ltN84Ld-AZZHc7ox0ozA&s";
+
+export const SHORTS_ICON = "https://logowik.com/content/uploads/images/youtube-shorts-black3609.jpg";
+
+export const SUBSCRIPTION_ICON = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDzRU94lnEIdUS07kGLpc9etwNVNHVgt2s_RYHphdTOYoqTBQmVAX0kK_FVqLvenjV8Bo&usqp=CAU";
+
+export const YOU_ICON = "https://static.thenounproject.com/png/2481186-200.png";
