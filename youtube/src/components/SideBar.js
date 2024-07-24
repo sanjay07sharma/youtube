@@ -5,7 +5,7 @@ const SideBar = () => {
   const sidebarVisible = useSelector(state => state.app.isMenuOpen);
   return (
     sidebarVisible ?
-    (<div className="p-5 shadow-lg w-56">
+    (<div className="p-5 shadow-lg w-56 col-span-2">
       <ul>
         <li className="flex">
         <img alt="Home" className="w-6 h-5 mt-2 mb-2" src={HOME_ICON}/>
@@ -36,7 +36,7 @@ const SideBar = () => {
         </ul>
     </div>)
     :
-   ( <div className="p-5 shadow-lg w-34">
+   ( <div className="p-5 shadow-lg w-44 col-span-1">
       <ul>
         <li>
           <img alt="Home" className="w-6 h-5 mb-4" src={HOME_ICON}/>
