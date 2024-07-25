@@ -8,9 +8,11 @@ const ButtonList = () => {
     "Ghazal", "Indian pop music", "Comedy", "Action", "Retro", "Classical",
   ];
   return (
-    <div className="flex hover:overflow-x-scroll space-x-3 w-screen">
+    <div className="hide-scrollbar flex overflow-x-scroll space-x-3 w-screen">
       {categories.map((label) => (
-        <Button name={label} key={label}/>
+        <div className="snap-start">
+          <Button name={label} key={label}/>
+        </div>
       ))}
     </div>
   )

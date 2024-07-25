@@ -3,7 +3,7 @@ import MainContainer from './MainContainer'
 
 const Body = () => {
   return (
-    <div className="flex overflow-x-hidden grid-flow-col">
+    <div className="flex overflow-x-hidden">
         <SideBar/>
         <MainContainer/>
     </div>

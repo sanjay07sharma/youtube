@@ -11,3 +11,5 @@ export const SHORTS_ICON = "https://logowik.com/content/uploads/images/youtube-s
 export const SUBSCRIPTION_ICON = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDzRU94lnEIdUS07kGLpc9etwNVNHVgt2s_RYHphdTOYoqTBQmVAX0kK_FVqLvenjV8Bo&usqp=CAU";
 
 export const YOU_ICON = "https://static.thenounproject.com/png/2481186-200.png";
+
+export const YOUTUBE_VIDEO_API = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=US&key=GOOGLE_API_KEY";
