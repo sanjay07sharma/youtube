@@ -1,0 +1,13 @@
+import React from 'react'
+
+const Button = (props) => {
+  return (
+    <div>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm w-auto text-nowrap">
+            {props.name}
+        </button>
+    </div>
+  )
+}
+
+export default Button

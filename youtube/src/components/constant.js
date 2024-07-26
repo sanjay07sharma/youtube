@@ -13,3 +13,5 @@ export const SUBSCRIPTION_ICON = "https://encrypted-tbn0.gstatic.com/images?q=tb
 export const YOU_ICON = "https://static.thenounproject.com/png/2481186-200.png";
 
 export const YOUTUBE_VIDEO_API = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=US&key=GOOGLE_API_KEY";
+
+export const YOUTUBE_VIDEO_BY_ID_API = "'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=";
