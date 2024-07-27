@@ -1,38 +1,25 @@
-import { useSelector } from "react-redux";
-import { YOUTUBE_VIDEO_BY_ID_API } from "./constant";
+import React from 'react'
+import { useSelector } from 'react-redux'
 
-const VideoCard = (props) => {
-  const videData = useSelector((state) => state.app.videoData);
-  debugger
-  if (!videData.length) {
-    return
-  }
-  videData.map(async (video) => {
-    const youtubeVideo = await fetch(YOUTUBE_VIDEO_BY_ID_API + video.id + "&key=GOOGLE_API_KEY");
-    const json = await youtubeVideo.json();
-    
-    
-    /// continue form here
-    debugger
-  });
-  // const { title, views, timeAgo, channel, image, onClick } = videData;
-  // return (
-  //   <div
-  //     className="relative cursor-pointer rounded-md shadow-md overflow-hidden"
-  //     onClick={onClick}
-  //   >
-  //     <img src={image} alt={title} className="w-full h-40 object-cover" />
-  //     <div className="p-4">
-  //       <h3 className="text-xl font-bold text-gray-900 truncate">{title}</h3>
-  //       <p className="text-gray-500 text-sm">{channel}</p>
-  //       <div className="flex items-center mt-2 text-gray-500 text-sm">
-  //         <span>{views} views</span>
-  //         <span className="ml-2">•</span>
-  //         <span className="ml-2">{timeAgo}</span>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
-};
+const VideoCard = () => {
+  const videData = useSelector(state => state.app.videoData);
+  if (!videData.length) return <div>loading...</div>
+
+  return (
+    videData.map((video, key) => (
+      <div id={key} className="w-96">
+          <div className="flex">
+            <img src={video.snippet.thumbnails.medium.url} alt="thumbnail" className="w-72 h-40 hover:w-96 hover:h-52"/>
+          </div>
+          <div className="flex flex-col p-2">
+            <h1 className="text-lg font-bold">{video.snippet.title}</h1>
+            {/* <p className="text-sm">{video.snippet.description}</p> */}
+            <p className="text-sm">{video.snippet.channelTitle}</p>
+            <p className="text-sm">{video.statistics.viewCount}</p>
+          </div>
+      </div>
+    ))
+  )
+}
 
 export default VideoCard
