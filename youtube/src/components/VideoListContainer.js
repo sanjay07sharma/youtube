@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { YOUTUBE_VIDEO_API } from "./constant";
+import { YOUTUBE_VIDEO_API } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { addVideoData } from "../utils/appSlice";
 import VideoCard from "./VideoCard";
@@ -7,6 +7,8 @@ import VideoCard from "./VideoCard";
 const VideoListContainer = () => {
   const dispatch = useDispatch();
   const getVideos = async () => {
+    debugger
+    console.log(YOUTUBE_VIDEO_API);
     const data = await fetch(YOUTUBE_VIDEO_API);
     const json = await data.json();
     dispatch(addVideoData(json.items));

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { HAMBURGER_IMAGE_URL, USER_IMAGE_URL, YOUTUBE_LOGO_URL } from "./constant"
+import { HAMBURGER_IMAGE_URL, USER_IMAGE_URL, YOUTUBE_LOGO_URL } from "../utils/constant"
 import { toggleMenu } from "../utils/appSlice";
 
 const Header = () => {

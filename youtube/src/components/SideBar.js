@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { HOME_ICON, SHORTS_ICON, SUBSCRIPTION_ICON, YOU_ICON } from "./constant"
+import { HOME_ICON, SHORTS_ICON, SUBSCRIPTION_ICON, YOU_ICON } from "../utils/constant"
 
 const SideBar = () => {
   const sidebarVisible = useSelector(state => state.app.isMenuOpen);

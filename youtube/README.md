@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+## Setting Up Routes
+
+- `npm i react-router-dom`
+- At app.js -> setup `appRouter`  by createBrowserRouter([{
+    path: "e.g /"
+    element: <ElementToRender/>
+    children: [
+        if any
+    ]
+}])
+- With the use of <RouterProvider router={appRouter}/>
+    so whatver my path will be that element will be rendered.
+- where will the children go ?
+    - wherever the <Outlet/> will be.
