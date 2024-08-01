@@ -13,8 +13,11 @@ const appSlice = createSlice({
         addVideoData: (state, action) => {
             state.videoData = action.payload;
         },
+        closeMenu: (state) => {
+            state.isMenuOpen = false;
+        },
     },
 });
 
 export default appSlice.reducer;
-export const { toggleMenu, addVideoData } = appSlice.actions;
+export const { toggleMenu, addVideoData, closeMenu } = appSlice.actions;

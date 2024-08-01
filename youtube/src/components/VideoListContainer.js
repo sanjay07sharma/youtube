@@ -7,7 +7,6 @@ import VideoCard from "./VideoCard";
 const VideoListContainer = () => {
   const dispatch = useDispatch();
   const getVideos = async () => {
-    debugger
     console.log(YOUTUBE_VIDEO_API);
     const data = await fetch(YOUTUBE_VIDEO_API);
     const json = await data.json();

@@ -36,22 +36,7 @@ const SideBar = () => {
         </ul>
     </div>)
     :
-   ( <div className="p-5 shadow-lg mx-3">
-      <ul>
-        <li>
-          <img alt="Home" className="w-6 h-5 mb-4 mx-4 cursor-pointer" src={HOME_ICON}/>
-        </li>
-        <li>
-          <img alt="Shorts" className="w-6 h-6 mb-4 cursor-pointer" src={SHORTS_ICON}/>
-        </li>
-        <li>
-          <img alt="Subscriptions" className="w-6 h-6 mb-4 cursor-pointer" src={SUBSCRIPTION_ICON}/>
-        </li>
-        <li>
-          <img alt="You" className="w-6 h-6 mb-4 cursor-pointer" src={YOU_ICON}/>
-        </li>
-      </ul>
-    </div>)
+   (null)
   )
 }
 
