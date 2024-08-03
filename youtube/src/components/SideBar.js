@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
-import { HOME_ICON, SHORTS_ICON, SUBSCRIPTION_ICON, YOU_ICON } from "../utils/constant"
+import { CATEGORY_IMG_URL, HOME_ICON, SHORTS_ICON, SUBSCRIPTION_ICON, YOU_ICON } from "../utils/constant"
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const sidebarVisible = useSelector(state => state.app.isMenuOpen);
@@ -7,10 +8,10 @@ const SideBar = () => {
     sidebarVisible ?
     (<div className="p-5 shadow-lg w-56 col-span-2">
       <ul>
-        <li className="flex cursor-pointer">
+        <Link to="/"><li className="flex cursor-pointer">
         <img alt="Home" className="w-6 h-5 mt-2 mb-2" src={HOME_ICON}/>
         <p className="pl-3 pt-2">Home</p>
-        </li>
+        </li></Link>
         <li className="flex cursor-pointer">
         <img alt="Shorts" className="w-6 h-6 mt-2 mb-4" src={SHORTS_ICON}/>
           <p className="pl-1 pt-2">Shorts</p>
@@ -19,6 +20,11 @@ const SideBar = () => {
         <img alt="Subscriptions" className="w-6 h-6 mb-4" src={SUBSCRIPTION_ICON}/>
           <p className="pl-1 pt-1 ">Subscription</p>
         </li>
+        <Link to="/category"><li className="flex cursor-pointer">
+          <img alt="category" className="w-6 h-6 mb-4" src={CATEGORY_IMG_URL}/>
+          <p className="pl-1 pt-1">Category</p> 
+        </li>
+        </Link>
       </ul>
         <h1 className="font-bold pt-5">Subscription</h1>
         <ul>
