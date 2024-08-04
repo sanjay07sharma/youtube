@@ -6,6 +6,7 @@ import VideoCard from "./VideoCard";
 
 const VideoListContainer = () => {
   const dispatch = useDispatch();
+  const videData = useSelector(state => state.app.videoData);
   const getVideos = async () => {
     console.log(YOUTUBE_VIDEO_API);
     const data = await fetch(YOUTUBE_VIDEO_API);
@@ -19,7 +20,7 @@ const VideoListContainer = () => {
 
   return (
     <div className="flex flex-wrap">
-        <VideoCard/>
+        <VideoCard videData={videData}/>
     </div>
   )
 }
