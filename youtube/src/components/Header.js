@@ -12,7 +12,7 @@ const Header = () => {
 
   const handleSearchClick = async() => {
     const searchInput = inputRef.current.value;
-    const searchData = await fetch(SEARCH_URL + `${searchInput}&key={process.env.REACT_APP_YOUTUBE_API}`);
+    const searchData = await fetch(SEARCH_URL + `${searchInput}&key=${process.env.REACT_APP_YOUTUBE_API}`);
     const jsonData = await searchData.json();
     dispatch(addVideoData(jsonData.items));
   };

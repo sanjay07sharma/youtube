@@ -8,7 +8,7 @@ const SideBar = () => {
     sidebarVisible ?
     (<div className="p-5 shadow-lg w-56 col-span-2">
       <ul>
-        <Link to="/"><li className="flex cursor-pointer">
+        <Link to="/" className="flex cursor-pointer"><li>
         <img alt="Home" className="w-6 h-5 mt-2 mb-2" src={HOME_ICON}/>
         <p className="pl-3 pt-2">Home</p>
         </li></Link>
@@ -20,7 +20,7 @@ const SideBar = () => {
         <img alt="Subscriptions" className="w-6 h-6 mb-4" src={SUBSCRIPTION_ICON}/>
           <p className="pl-1 pt-1 ">Subscription</p>
         </li>
-        <Link to="/category"><li className="flex cursor-pointer">
+        <Link to="/category" className="flex cursor-pointer"><li>
           <img alt="category" className="w-6 h-6 mb-4" src={CATEGORY_IMG_URL}/>
           <p className="pl-1 pt-1">Category</p> 
         </li>
