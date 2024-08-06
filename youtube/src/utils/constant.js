@@ -20,6 +20,4 @@ export const SUBSCRIPTION_URL = `https://youtube.googleapis.com/youtube/v3/subsc
 
 export const CATEGORIES_URL = `https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${process.env.REACT_APP_YOUTUBE_API}`;
 
-export const CATEGORY_IMG_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHZmgn7KZfbDj1g4BFUtYI4a015CYrIu-HRA&s";
-
 export const SEARCH_URL = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=';
