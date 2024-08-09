@@ -85,3 +85,39 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     so whatver my path will be that element will be rendered.
 - where will the children go ?
     - wherever the <Outlet/> will be.
+
+
+
+### Higher Order Component
+
+A Higher Order Component (HOC) is an advanced technique in React for reusing component logic.
+HOCs are not part of the React API, but they are a pattern that emerges from React's compositional nature.
+A HOC is a function that takes a component and returns a new component.
+
+example :
+```js
+function withLogging(WrappedComponent) {
+  return class extends React.Component {
+    componentDidMount() {
+      console.log('Component mounted');
+    }
+
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  };
+}```
+
+
+### Debouncing
+Debouncing is a programming practice used to ensure that time-consuming tasks do not fire so often,
+which can cause performance issues. It limits the rate at which a function can fire.
+In the context of web development, debouncing is often used to limit the rate at which a function is executed,
+such as handling user input events like keystrokes or window resizing.
+
+```js
+useEffect(() => {
+    const timer = setTimeout(() => handleSearchSuggestion(), 200);
+    return () => clearTimeout(timer);
+},[searchQuery]);
+```

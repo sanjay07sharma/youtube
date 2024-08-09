@@ -21,3 +21,5 @@ export const SUBSCRIPTION_URL = `https://youtube.googleapis.com/youtube/v3/subsc
 export const CATEGORIES_URL = `https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${process.env.REACT_APP_YOUTUBE_API}`;
 
 export const SEARCH_URL = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=';
+
+export const SEARCH_SUGGESTION_API = "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";

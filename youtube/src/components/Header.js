@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux"
-import { HAMBURGER_IMAGE_URL, SEARCH_URL, USER_IMAGE_URL, YOUTUBE_LOGO_URL } from "../utils/constant"
+import { HAMBURGER_IMAGE_URL, SEARCH_SUGGESTION_API, SEARCH_URL, USER_IMAGE_URL, YOUTUBE_LOGO_URL } from "../utils/constant"
 import { addVideoData, toggleMenu } from "../utils/appSlice";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const inputRef = useRef();
   const dispatch = useDispatch();
   const handleHamburgerMenuClick = () => {
@@ -16,6 +17,30 @@ const Header = () => {
     const jsonData = await searchData.json();
     dispatch(addVideoData(jsonData.items));
   };
+
+  const handleSearchSuggestion = async() => {
+    const suggestionData = await fetch(SEARCH_SUGGESTION_API + searchQuery);
+    const jsonData = await suggestionData.json();
+    console.log(jsonData[1]);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => handleSearchSuggestion(), 200);
+    return () => clearTimeout(timer);
+  },[searchQuery]);
+
+/*
+* key - i
+* render the component
+* useEffect();
+* start timer → make api call after 200 ms
+
+* key - ip
+* destroy the component(useffect return method)
+* re-render the component
+* useEffect()
+* start timer = make api call after 200 ms
+*/
 
   return (
     <div className="grid grid-flow-col p-2 m-2 shadow-lg">
@@ -36,14 +61,11 @@ const Header = () => {
               type="text"
               placeholder="Search"
               ref={inputRef}
+              value={searchQuery}
+              onChange={(ev) => setSearchQuery(ev.target.value)}
             />
             <button
               className="w-16 h-10 px-2 py-2 border border-gray-400 rounded-r-full bg-gray-300"
-              onKeyDown={ (ev) => {
-                if (ev.key === 'Enter') {
-                  handleSearchClick();
-                }
-              }}
               onClick={handleSearchClick}
               > 🔍 </button>
         </div>
