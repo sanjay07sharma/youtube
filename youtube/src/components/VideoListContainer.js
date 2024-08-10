@@ -19,7 +19,7 @@ const VideoListContainer = () => {
   },[]);
 
   return (
-    <div className="flex flex-wrap">
+    <div>
         <VideoCard videData={videData}/>
     </div>
   )

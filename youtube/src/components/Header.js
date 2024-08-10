@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const inputRef = useRef();
   const dispatch = useDispatch();
   const handleHamburgerMenuClick = () => {
@@ -21,13 +23,14 @@ const Header = () => {
   const handleSearchSuggestion = async() => {
     const suggestionData = await fetch(SEARCH_SUGGESTION_API + searchQuery);
     const jsonData = await suggestionData.json();
-    console.log(jsonData[1]);
+    setSuggestions(jsonData[1]);
   };
 
   useEffect(() => {
     const timer = setTimeout(() => handleSearchSuggestion(), 200);
     return () => clearTimeout(timer);
   },[searchQuery]);
+
 
 /*
 * key - i
@@ -56,18 +59,33 @@ const Header = () => {
         </a>
         </div>
         <div className="col-span-10 mx-24 text-center border-gray-400">
+          <div>
             <input
-              className="w-1/2 h-10 text-center border border-gray-400 rounded-l-full"
+              className="w-1/2 h-10 p-4 border border-gray-400 rounded-l-full"
               type="text"
               placeholder="Search"
               ref={inputRef}
               value={searchQuery}
               onChange={(ev) => setSearchQuery(ev.target.value)}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => setShowSuggestions(false)}
             />
             <button
               className="w-16 h-10 px-2 py-2 border border-gray-400 rounded-r-full bg-gray-300"
               onClick={handleSearchClick}
               > 🔍 </button>
+            { showSuggestions &&
+              <div className="border border-gray-200 bg-white fixed mx-96 w-1/3 text-left px-5 py-2 rounded-lg z-10 ">
+                <ul>
+                  {
+                    suggestions.map((suggestion, i) => (
+                      <li key={i} className="py-2 px-3 shadow-sm hover:bg-gray-100">🔍  {suggestion}</li>
+                    ))
+                  }
+                </ul>
+              </div>
+              }
+          </div>
         </div>
         <div className="col-span-1 mt-4">
             <img className="h-10" alt="user" src={USER_IMAGE_URL}/>

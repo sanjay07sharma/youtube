@@ -1,27 +1,33 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const VideoCard = (props) => {
   const videData = props.videData;
-  if (!videData.length) return <div>loading...</div>
+  if (!videData.length) return <div>Loading...</div>;
 
   return (
-    videData.map((video, key) => (
-      <Link to={"/watch?v="+video.id}>
-        <div id={key} className="w-96">
-            <div className="flex">
-              <img src={video.snippet.thumbnails.medium.url} alt="thumbnail" className="w-72 h-40 hover:w-96 hover:h-52"/>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4">
+      {videData.map((video, key) => (
+        <Link to={"/watch?v=" + video.id} key={key} className="block">
+          <div className="w-full shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105">
+            <div className="relative">
+              <img
+                src={video.snippet.thumbnails.medium.url}
+                alt="thumbnail"
+                className="w-full h-40 md:h-48 lg:h-56 object-cover"
+              />
             </div>
-            <div className="flex flex-col p-2">
-              <h1 className="text-lg font-bold">{video.snippet.title}</h1>
-              <p className="text-sm">{video.snippet.channelTitle}</p>
-              <p className="text-sm">{video.statistics?.viewCount}</p>
+            <div className="p-4">
+              <h1 className="text-lg font-bold text-gray-900 truncate">{video.snippet.title}</h1>
+              <p className="text-sm text-gray-600">{video.snippet.channelTitle}</p>
+              <p className="text-sm text-gray-600">{video.statistics?.viewCount} views</p>
             </div>
-        </div>
-      </Link>
-    ))
-  )
-}
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+};
 
-export default VideoCard
+export default VideoCard;
