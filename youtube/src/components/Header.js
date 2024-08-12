@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { HAMBURGER_IMAGE_URL, SEARCH_SUGGESTION_API, SEARCH_URL, USER_IMAGE_URL, YOUTUBE_LOGO_URL } from "../utils/constant"
 import { addVideoData, toggleMenu } from "../utils/appSlice";
 import { useEffect, useRef, useState } from "react";
+import { setSearchSuggestions } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -9,6 +10,8 @@ const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const inputRef = useRef();
   const dispatch = useDispatch();
+
+  const  searchCache = useSelector((state) => state.search);
   const handleHamburgerMenuClick = () => {
       dispatch(toggleMenu())
   }
@@ -24,10 +27,18 @@ const Header = () => {
     const suggestionData = await fetch(SEARCH_SUGGESTION_API + searchQuery);
     const jsonData = await suggestionData.json();
     setSuggestions(jsonData[1]);
+    dispatch(setSearchSuggestions({[searchQuery] : jsonData[1]}));
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => handleSearchSuggestion(), 200);
+    const timer = setTimeout(() => {
+      debugger
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        handleSearchSuggestion();
+      }
+    }, 200);
     return () => clearTimeout(timer);
   },[searchQuery]);
 
