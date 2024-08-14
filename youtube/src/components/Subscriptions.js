@@ -11,11 +11,12 @@ const Subscriptions = () => {
     useEffect(() => {
         getSubscription();
     },[])
+
   return (
     <div>
         Channnel Page Here
     </div>
-  )
+  );
 }
 
 export default Subscriptions
