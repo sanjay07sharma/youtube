@@ -43,19 +43,6 @@ const Header = () => {
   },[searchQuery]);
 
 
-/*
-* key - i
-* render the component
-* useEffect();
-* start timer → make api call after 200 ms
-
-* key - ip
-* destroy the component(useffect return method)
-* re-render the component
-* useEffect()
-* start timer = make api call after 200 ms
-*/
-
   return (
     <div className="grid grid-flow-col p-2 m-2 shadow-lg">
         <div className="flex col-span-1">

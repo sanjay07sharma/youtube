@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const sidebarVisible = useSelector(state => state.app.isMenuOpen);
+
   return (
     sidebarVisible ?
     (<div className="p-5 shadow-lg w-56 col-span-2">
