@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { closeMenu } from '../utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import CommentContainer from './CommentContainer';
+import LikeSubscribe from './LikeSubscribe';
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -23,6 +24,7 @@ const WatchPage = () => {
         allowfullscreen>
         </iframe>
       </div>
+      <LikeSubscribe/>
       <CommentContainer />
     </div>
   )
