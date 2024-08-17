@@ -20,6 +20,7 @@ const Header = () => {
     const searchInput = inputRef.current.value;
     const searchData = await fetch(SEARCH_URL + `${searchInput}&key=${process.env.REACT_APP_YOUTUBE_API}`);
     const jsonData = await searchData.json();
+    console.log(jsonData);
     dispatch(addVideoData(jsonData.items));
   };
 
@@ -32,7 +33,6 @@ const Header = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      debugger
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
       } else {

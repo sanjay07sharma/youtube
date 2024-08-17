@@ -1,4 +1,5 @@
 import React from 'react'
+import Comments from './Comments'
 
 const CommentContainer = () => {
   return (
@@ -6,6 +7,7 @@ const CommentContainer = () => {
         <h1 className="text-2xl">
             Comments:
         </h1>
+        <Comments/>
     </div>
   )
 }

@@ -1,16 +1,21 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
+
+const commentsData = [{
+    name: " Sanjay Sharma",
+    comment: "lorem ipsuem",
+    replies: []
+}]
 
 const Comments = () => {
     
-    useEffect(() => {
-        // api call to get comments
-        const data = fetch('/comments_api')
-        
-    },[]);
+    const {name, text, replies} = commentsData;
     
     return (
         <div>
-            (display comments component)
+            <div>
+                <p>{name}</p>
+                <p>{text}</p>
+            </div>
         </div>
     );
 }

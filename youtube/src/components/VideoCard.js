@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const VideoCard = (props) => {
-  const videData = props.videData;
-  if (!videData.length) return <div>Loading...</div>;
+  const videData = useSelector((state) => state.app.videoData);
+  debugger
+  if (!videData?.length) return <div>Loading...</div>;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4">
