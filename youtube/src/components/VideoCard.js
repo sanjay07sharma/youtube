@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const VideoCard = (props) => {
   const videData = useSelector((state) => state.app.videoData);
-  debugger
   if (!videData?.length) return <div>Loading...</div>;
 
   return (

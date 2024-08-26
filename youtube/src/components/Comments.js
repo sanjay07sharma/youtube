@@ -3,18 +3,48 @@ import { useEffect } from 'react'
 const commentsData = [{
     name: " Sanjay Sharma",
     comment: "lorem ipsuem",
-    replies: []
+    replies: [
+        {
+            name: " Sanjay Sharma",
+            comment: "lorem ipsuem",
+            replies: [
+                {
+                    name: " Sanjay Sharma",
+                    comment: "lorem ipsuem",
+                    replies: [
+                        {
+                            name: " Sanjay Sharma",
+                            comment: "lorem ipsuem",
+                            replies: [
+                                {
+                                    name: " Sanjay Sharma",
+                                    comment: "lorem ipsuem",
+                                    replies: [
+                                        {
+                                            name: " Sanjay Sharma",
+                                            comment: "lorem ipsuem",
+                                            replies: []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }]
 
 const Comments = () => {
     
-    const {name, text, replies} = commentsData;
+    const {name, comment, replies} = commentsData;
     
     return (
         <div>
             <div>
                 <p>{name}</p>
-                <p>{text}</p>
+                <p>{comment}</p>
             </div>
         </div>
     );
