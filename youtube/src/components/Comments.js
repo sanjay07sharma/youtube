@@ -38,7 +38,7 @@ const commentsData = [{
 
 const Comments = () => {
     
-    const {name, comment, replies} = commentsData;
+    const {name, comment, replies} = commentsData[0];
     
     return (
         <div>

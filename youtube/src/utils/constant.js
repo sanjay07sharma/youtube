@@ -23,3 +23,18 @@ export const CATEGORIES_URL = `https://youtube.googleapis.com/youtube/v3/videoCa
 export const SEARCH_URL = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=';
 
 export const SEARCH_SUGGESTION_API = "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+
+export const SCISSOR_ICON = "https://img.icons8.com/parakeet-line/48/scissors.png";
+
+export const DOWNLOAD_ICON = "https://img.icons8.com/windows/32/download--v1.png";
+
+export const SHARE_ICON = "https://img.icons8.com/material-sharp/24/share-3.png";
+
+export const LIKE_ICON = "https://img.icons8.com/windows/32/facebook-like.png";
+
+export const DISLIKE_ICON = "https://img.icons8.com/material-outlined/24/thumbs-down.png";
+
+export const REPORT_ICON = "https://img.icons8.com/material/24/filled-flag--v1.png";
+
+export const SAVE_ICON = "https://img.icons8.com/ios/50/bookmark-ribbon.png";

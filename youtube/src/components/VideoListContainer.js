@@ -17,7 +17,7 @@ const VideoListContainer = () => {
   },[]);
 
   return (
-    <div>
+    <div className="w-[90%]">
         <VideoCard/>
     </div>
   )
