@@ -24,7 +24,6 @@ export const SEARCH_URL = 'https://youtube.googleapis.com/youtube/v3/search?part
 
 export const SEARCH_SUGGESTION_API = "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
-
 export const SCISSOR_ICON = "https://img.icons8.com/parakeet-line/48/scissors.png";
 
 export const DOWNLOAD_ICON = "https://img.icons8.com/windows/32/download--v1.png";
