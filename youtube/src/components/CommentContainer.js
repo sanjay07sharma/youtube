@@ -1,9 +1,40 @@
 import { USER_IMAGE_URL } from '../utils/constant';
 
 const commentsData = [{
-    name: " Sanjay Sharma",
-    comment: "lorem ipsuem",
-    replies: [
+            name: " Sanjay Sharma",
+            comment: "lorem ipsuem",
+            replies: [
+                {
+                    name: " Sanjay Sharma",
+                    comment: "lorem ipsuem",
+                    replies: [
+                        {
+                            name: " Sanjay Sharma",
+                            comment: "lorem ipsuem",
+                            replies: [
+                                {
+                                    name: " Sanjay Sharma",
+                                    comment: "lorem ipsuem",
+                                    replies: [
+                                        {
+                                            name: " Sanjay Sharma",
+                                            comment: "lorem ipsuem",
+                                            replies: [
+                                                {
+                                                    name: " Sanjay Sharma",
+                                                    comment: "lorem ipsuem",
+                                                    replies: []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
         {
             name: " Sanjay Sharma",
             comment: "lorem ipsuem",
@@ -23,7 +54,13 @@ const commentsData = [{
                                         {
                                             name: " Sanjay Sharma",
                                             comment: "lorem ipsuem",
-                                            replies: []
+                                            replies: [
+                                                {
+                                                    name: " Sanjay Sharma",
+                                                    comment: "lorem ipsuem",
+                                                    replies: []
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
@@ -32,12 +69,10 @@ const commentsData = [{
                     ]
                 }
             ]
-        }
+        },
     ]
-}]
 
 const Comments = ({data}) => {
-  debugger
     const {name, comment} = data;    
     return (
         <div className='flex gap-2'>
@@ -51,9 +86,18 @@ const Comments = ({data}) => {
 }
 
 const CommentsList = ({replies}) => {
-  return replies.map((reply) => (
-    <Comments data={reply}/>
-  ))
+  return (
+    <div className="ml-4 border-l-2 border-gray-300 pl-4">
+      {replies.map((reply, index) => (
+        <div key={index}>
+          <Comments data={reply}/>
+          {reply.replies && reply.replies.length > 0 && (
+            <CommentsList replies={reply.replies}/>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 }
 
 const CommentContainer = () => {
@@ -67,4 +111,4 @@ const CommentContainer = () => {
   )
 }
 
-export default CommentContainer
+export default CommentContainer;
