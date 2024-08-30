@@ -37,3 +37,5 @@ export const DISLIKE_ICON = "https://img.icons8.com/material-outlined/24/thumbs-
 export const REPORT_ICON = "https://img.icons8.com/material/24/filled-flag--v1.png";
 
 export const SAVE_ICON = "https://img.icons8.com/ios/50/bookmark-ribbon.png";
+
+export const COMMENT_API = `https://youtube.googleapis.com/youtube/v3/comments?part=snippet&parentId=UgzDE2tasfmrYLyNkGt4AaABAg&key=${process.env.REACT_APP_YOUTUBE_API}`;

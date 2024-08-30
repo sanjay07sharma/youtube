@@ -1,5 +1,10 @@
-import { USER_IMAGE_URL } from '../utils/constant';
+import { COMMENT_API, USER_IMAGE_URL } from '../utils/constant';
 
+const commentsDataFromUrl = async () => {
+    const response = await fetch(COMMENT_API);
+    const data = await response.json();
+    console.log(data);
+}
 const commentsData = [{
             name: " Sanjay Sharma",
             comment: "lorem ipsuem",

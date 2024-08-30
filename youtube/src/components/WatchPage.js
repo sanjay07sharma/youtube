@@ -4,13 +4,21 @@ import { closeMenu } from '../utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import CommentContainer from './CommentContainer';
 import LikeSubscribe from './LikeSubscribe';
+import { COMMENT_API } from '../utils/constant';
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get('v');
   const dispatch = useDispatch();
+
+  const commentsDataFromUrl = async () => {
+      const response = await fetch(COMMENT_API);
+      const data = await response.json();
+      console.log(data);
+  }
   useEffect(() => {
     dispatch(closeMenu());
+    commentsDataFromUrl();
   }, []);
 
   return (
