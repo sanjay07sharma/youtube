@@ -1,5 +1,11 @@
-import { useDispatch, useSelector } from "react-redux"
-import { HAMBURGER_IMAGE_URL, SEARCH_SUGGESTION_API, SEARCH_URL, USER_IMAGE_URL, YOUTUBE_LOGO_URL } from "../utils/constant"
+import { useDispatch, useSelector } from "react-redux";
+import {
+  HAMBURGER_IMAGE_URL,
+  SEARCH_SUGGESTION_API,
+  SEARCH_URL,
+  USER_IMAGE_URL,
+  YOUTUBE_LOGO_URL,
+} from "../utils/constant";
 import { addVideoData, toggleMenu } from "../utils/appSlice";
 import { useEffect, useRef, useState } from "react";
 import { setSearchSuggestions } from "../utils/searchSlice";
@@ -11,24 +17,26 @@ const Header = () => {
   const inputRef = useRef();
   const dispatch = useDispatch();
 
-  const  searchCache = useSelector((state) => state.search);
+  const searchCache = useSelector((state) => state.search);
   const handleHamburgerMenuClick = () => {
-      dispatch(toggleMenu())
-  }
+    dispatch(toggleMenu());
+  };
 
-  const handleSearchClick = async() => {
+  const handleSearchClick = async () => {
+    debugger
     const searchInput = inputRef.current.value;
-    const searchData = await fetch(SEARCH_URL + `${searchInput}&key=${process.env.REACT_APP_YOUTUBE_API}`);
+    const searchData = await fetch(
+      SEARCH_URL + `${searchInput}&key=${process.env.REACT_APP_YOUTUBE_API}`
+    );
     const jsonData = await searchData.json();
-    console.log(jsonData);
     dispatch(addVideoData(jsonData.items));
   };
 
-  const handleSearchSuggestion = async() => {
+  const handleSearchSuggestion = async () => {
     const suggestionData = await fetch(SEARCH_SUGGESTION_API + searchQuery);
     const jsonData = await suggestionData.json();
     setSuggestions(jsonData[1]);
-    dispatch(setSearchSuggestions({[searchQuery] : jsonData[1]}));
+    dispatch(setSearchSuggestions({ [searchQuery]: jsonData[1] }));
   };
 
   useEffect(() => {
@@ -40,10 +48,9 @@ const Header = () => {
       }
     }, 200);
     return () => clearTimeout(timer);
-  },[searchQuery]);
+  }, [searchQuery]);
 
-
-/*
+  /*
 * key - i
 * render the component
 * useEffect();
@@ -58,7 +65,7 @@ const Header = () => {
 
   return (
     <div className="grid grid-flow-col p-2 m-2 shadow-lg">
-        <div className="flex col-span-1">
+      <div className="flex col-span-1">
         <img
           className="h-10 m-3 cursor-pointer"
           alt="Hamburger menu"
@@ -66,43 +73,53 @@ const Header = () => {
           onClick={handleHamburgerMenuClick}
         />
         <a href="/">
-          <img className="h-16" alt="youtube logo" src={YOUTUBE_LOGO_URL}/>
+          <img className="h-16" alt="youtube logo" src={YOUTUBE_LOGO_URL} />
         </a>
+      </div>
+      <div className="col-span-10 mx-24 text-center border-gray-400">
+        <div>
+          <input
+            className="w-1/2 h-10 p-4 border border-gray-400 rounded-l-full"
+            type="text"
+            placeholder="Search"
+            ref={inputRef}
+            value={searchQuery}
+            onChange={(ev) => setSearchQuery(ev.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
+          />
+          <button
+            className="w-16 h-10 px-2 py-2 border border-gray-400 rounded-r-full bg-gray-300"
+            onClick={handleSearchClick}
+          >
+            {" "}
+            🔍{" "}
+          </button>
+          {showSuggestions && (
+            <div className="border border-gray-200 bg-white fixed mx-96 w-1/3 text-left px-5 py-2 rounded-lg z-10 ">
+              <ul>
+                {suggestions.map((suggestion, key) => (
+                  <button
+                  key={key}
+                  className="py-2 px-3 shadow-sm hover:bg-gray-100 cursor-pointer w-full text-start"
+                  onHover={(ev) => {
+                    setSearchQuery(suggestion);
+                    handleSearchClick();
+                  }}
+                >
+                  🔍 {suggestion} 
+                </button>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-        <div className="col-span-10 mx-24 text-center border-gray-400">
-          <div>
-            <input
-              className="w-1/2 h-10 p-4 border border-gray-400 rounded-l-full"
-              type="text"
-              placeholder="Search"
-              ref={inputRef}
-              value={searchQuery}
-              onChange={(ev) => setSearchQuery(ev.target.value)}
-              onFocus={() => setShowSuggestions(true)}
-              onBlur={() => setShowSuggestions(false)}
-            />
-            <button
-              className="w-16 h-10 px-2 py-2 border border-gray-400 rounded-r-full bg-gray-300"
-              onClick={handleSearchClick}
-              > 🔍 </button>
-            { showSuggestions &&
-              <div className="border border-gray-200 bg-white fixed mx-96 w-1/3 text-left px-5 py-2 rounded-lg z-10 ">
-                <ul>
-                  {
-                    suggestions.map((suggestion, i) => (
-                      <li key={i} className="py-2 px-3 shadow-sm hover:bg-gray-100">🔍  {suggestion}</li>
-                    ))
-                  }
-                </ul>
-              </div>
-              }
-          </div>
-        </div>
-        <div className="col-span-1 mt-4">
-            <img className="h-10" alt="user" src={USER_IMAGE_URL}/>
-        </div>
+      </div>
+      <div className="col-span-1 mt-4">
+        <img className="h-10" alt="user" src={USER_IMAGE_URL} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
