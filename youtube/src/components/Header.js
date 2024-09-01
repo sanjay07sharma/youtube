@@ -6,7 +6,8 @@ import {
   USER_IMAGE_URL,
   YOUTUBE_LOGO_URL,
 } from "../utils/constant";
-import { addVideoData, toggleMenu } from "../utils/appSlice";
+
+import { addVideoData, toggleMenu, buttonOptionsClick } from "../utils/appSlice";
 import { useEffect, useRef, useState } from "react";
 import { setSearchSuggestions } from "../utils/searchSlice";
 
@@ -23,7 +24,6 @@ const Header = () => {
   };
 
   const handleSearchClick = async () => {
-    debugger
     const searchInput = inputRef.current.value;
     const searchData = await fetch(
       SEARCH_URL + `${searchInput}&key=${process.env.REACT_APP_YOUTUBE_API}`
@@ -31,6 +31,8 @@ const Header = () => {
     const jsonData = await searchData.json();
     dispatch(addVideoData(jsonData.items));
   };
+  
+  dispatch(buttonOptionsClick({ buttonText: "", handleClick: handleSearchClick }));
 
   const handleSearchSuggestion = async () => {
     const suggestionData = await fetch(SEARCH_SUGGESTION_API + searchQuery);
@@ -86,7 +88,11 @@ const Header = () => {
             value={searchQuery}
             onChange={(ev) => setSearchQuery(ev.target.value)}
             onFocus={() => setShowSuggestions(true)}
-            onBlur={() => setShowSuggestions(false)}
+            onBlur={(ev) => {
+              setSearchQuery(ev.relatedTarget?.textContent.split("🔍 ")[1] || "");
+              handleSearchClick();
+              setShowSuggestions(false)
+            }}
           />
           <button
             className="w-16 h-10 px-2 py-2 border border-gray-400 rounded-r-full bg-gray-300"
@@ -96,18 +102,16 @@ const Header = () => {
             🔍{" "}
           </button>
           {showSuggestions && (
-            <div className="border border-gray-200 bg-white fixed mx-96 w-1/3 text-left px-5 py-2 rounded-lg z-10 ">
+            <div className="border border-gray-200 bg-white fixed mx-[27rem] w-1/3 text-left px-5 py-2 rounded-lg z-10">
               <ul>
                 {suggestions.map((suggestion, key) => (
                   <button
                   key={key}
                   className="py-2 px-3 shadow-sm hover:bg-gray-100 cursor-pointer w-full text-start"
-                  onHover={(ev) => {
-                    setSearchQuery(suggestion);
-                    handleSearchClick();
+                  onClick={(ev) => {
                   }}
                 >
-                  🔍 {suggestion} 
+                  🔍 {suggestion}
                 </button>
                 ))}
               </ul>

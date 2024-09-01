@@ -5,6 +5,10 @@ const appSlice = createSlice({
     initialState: {
         isMenuOpen: true,
         videoData: {},
+        buttonOptionsClick:{
+            buttonText:"",
+            handleClick: () => {},
+        }
     },
     reducers: {
         toggleMenu: (state) => {
@@ -15,6 +19,9 @@ const appSlice = createSlice({
         },
         closeMenu: (state) => {
             state.isMenuOpen = false;
+        },
+        buttonOptionsClick: (state, action) => {
+            state.buttonOptions = action.payload;
         },
     },
 });
