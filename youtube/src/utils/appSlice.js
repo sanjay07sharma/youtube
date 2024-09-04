@@ -27,4 +27,4 @@ const appSlice = createSlice({
 });
 
 export default appSlice.reducer;
-export const { toggleMenu, addVideoData, closeMenu } = appSlice.actions;
+export const { toggleMenu, addVideoData, closeMenu,buttonOptionsClick } = appSlice.actions;

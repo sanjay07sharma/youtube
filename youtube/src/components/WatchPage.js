@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import CommentContainer from './CommentContainer';
 import LikeSubscribe from './LikeSubscribe';
 import { COMMENT_API } from '../utils/constant';
+import LiveChat from './LiveChat';
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -22,14 +23,17 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col">
-      <div>
+    <div className="flex flex-col w-screen">
+      <div className='flex w-full'>
+        <div>
         <iframe width="1400" height="600"
         src={`https://www.youtube.com/embed/${videoId}`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen>
         </iframe>
+        </div>
+        <LiveChat/>
       </div>
       <LikeSubscribe/>
       <CommentContainer />
