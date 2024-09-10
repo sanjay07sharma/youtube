@@ -38,4 +38,7 @@ export const REPORT_ICON = "https://img.icons8.com/material/24/filled-flag--v1.p
 
 export const SAVE_ICON = "https://img.icons8.com/ios/50/bookmark-ribbon.png";
 
-export const COMMENT_API = `https://youtube.googleapis.com/youtube/v3/comments?part=snippet&parentId=UgzDE2tasfmrYLyNkGt4AaABAg&key=${process.env.REACT_APP_YOUTUBE_API}`;
+export const COMMENT_API = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=_`;
+
+
+export const LIVE_CHAT_COUNT = 50;
