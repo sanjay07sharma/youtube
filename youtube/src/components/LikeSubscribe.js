@@ -20,7 +20,7 @@ const actions = [
 ];
 
 const ActionButton = ({ icon, label, customClass = '' }) => (
-  <button className={`action-btn ${customClass} bg-gray-400 text-white rounded-full h-10 flex items-center justify-center gap-2 w-28`}>
+  <button className={`action-btn ${customClass} bg-gray-400 hover:bg-gray-600 text-white rounded-full h-10 flex items-center justify-center gap-2 w-28`}>
     <img src={icon} className="w-6 h-6 invert" alt={`${label} icon`} />
     <p>{label}</p>
   </button>
