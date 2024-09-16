@@ -88,7 +88,7 @@ const Header = () => {
               🔍
             </button>
             {showSuggestions && (
-              <div className="absolute border border-gray-200 bg-white w-1/2 text-left px-5 py-2 rounded-lg z-10">
+              <div className="absolute border border-gray-200 bg-white w-1/2 text-left px-5 py-2 rounded-lg z-10 ml-56">
                 <ul>
                   {suggestions.map((suggestion, key) => (
                     <button

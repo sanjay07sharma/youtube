@@ -22,11 +22,35 @@ const LiveChat = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-full h-[600px] border border-black bg-slate-100 overflow-y-auto gap-2 flex flex-col-reverse">
-      {chatMessages.map((chatMessage, index) => (
-        <ChatMessage key={index} name={chatMessage.name} message={chatMessage.message} />
-      ))}
-    </div>
+    <form onSubmit={
+      (e) => {
+        e.preventDefault();
+        // handle form submission
+        if (e.target[0].value) {
+          dispatch(
+            addMessage({
+              name: "You",
+              message: e.target[0].value,
+            })
+          );
+        }
+        e.target[0].value = "";
+      }
+    }>
+      <div className="w-full h-[565px] border border-black bg-slate-100 overflow-y-auto gap-2 flex flex-col-reverse">
+        {chatMessages.map((chatMessage, index) => (
+          <ChatMessage key={index} name={chatMessage.name} message={chatMessage.message} />
+        ))}
+      </div>
+      <div className="flex">
+        <input
+          type="text"
+          placeholder="Type your message here"
+          className="w-[75%] h-10 border border-black"
+        />
+        <button className="w-[25%] h-10 bg-blue-500 text-white">Send</button>
+      </div>
+    </form>
   );
 };
 
