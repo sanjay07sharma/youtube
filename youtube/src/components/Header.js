@@ -7,7 +7,7 @@ import {
   YOUTUBE_LOGO_URL,
 } from "../utils/constant";
 
-import { addVideoData, toggleMenu, buttonOptionsClick } from "../utils/appSlice";
+import { addVideoData, toggleMenu } from "../utils/appSlice";
 import { useEffect, useRef, useState } from "react";
 import { setSearchSuggestions } from "../utils/searchSlice";
 import ButtonList from "./ButtonList";
@@ -25,6 +25,7 @@ const Header = () => {
   };
 
   const handleSearchClick = async () => {
+    debugger
     const searchInput = inputRef.current.value;
     const searchData = await fetch(
       SEARCH_URL + `${searchInput}&key=${process.env.REACT_APP_YOUTUBE_API}`
@@ -33,8 +34,6 @@ const Header = () => {
     dispatch(addVideoData(jsonData.items));
   };
   
-  dispatch(buttonOptionsClick({ buttonText: "", handleClick: handleSearchClick }));
-
   const handleSearchSuggestion = async () => {
     const suggestionData = await fetch(SEARCH_SUGGESTION_API + searchQuery);
     const jsonData = await suggestionData.json();
@@ -113,7 +112,7 @@ const Header = () => {
         </div>
       </div>
       <div className="row-span-1 overflow-x-hidden">
-        <ButtonList handleSearchClick={handleSearchClick} setSearchQuery={setSearchQuery}/>
+        <ButtonList handleSearchClick={handleSearchClick}/>
       </div>
     </div>
   );

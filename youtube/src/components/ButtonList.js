@@ -1,15 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import Button from "./Button";
-import { buttonOptionsClick } from "../utils/appSlice";
-
 const ButtonList = (props) => {
-  debugger
-  const dispatch = useDispatch();
-  const handleSearchClick = useSelector((state) => state.app.buttonOptions.handleClick);
+  // const inputRef = useRef();
+  const handleSearchClick = props.handleSearchClick;
   
-  const handleButtonClick = (ev) => {
-    dispatch(buttonOptionsClick({ buttonText: ev.target.textContent, handleClick: handleSearchClick }));
-    handleSearchClick();
+  function handleButtonClick(ev) {
+    const buttonText = ev.target.textContent;
+    // inputRef.current.value = buttonText; check why undefied
+    document.querySelector('input').value = buttonText;
+    handleSearchClick()
   }
   
   const categories = [
@@ -18,11 +15,17 @@ const ButtonList = (props) => {
     "Aamir Khan", "Computers", "Dramedy", "Arijit Singh", "Satire",
     "Ghazal", "Indian pop music", "Comedy", "Action", "Retro", "Classical",
   ];
+
   return (
     <div className="flex overflow-x-scroll space-x-3 w-screen hide-scrollbar">
       {categories.map((label) => (
         <div key={label} className="snap-start">
-          <Button name={label} onClick={handleButtonClick} />
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm whitespace-nowrap"
+            onClick={handleButtonClick}
+          >
+            {label}
+          </button>
         </div>
       ))}
     </div>
