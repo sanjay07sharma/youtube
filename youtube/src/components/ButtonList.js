@@ -1,10 +1,8 @@
 const ButtonList = (props) => {
-  // const inputRef = useRef();
   const handleSearchClick = props.handleSearchClick;
   
   function handleButtonClick(ev) {
     const buttonText = ev.target.textContent;
-    // inputRef.current.value = buttonText; check why undefied
     document.querySelector('input').value = buttonText;
     handleSearchClick()
   }

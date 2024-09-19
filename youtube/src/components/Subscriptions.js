@@ -11,6 +11,7 @@ const Subscriptions = () => {
     useEffect(() => {
         getSubscription();
     },[])
+
   return (
     <div>
         Channnel Page Here

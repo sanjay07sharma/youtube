@@ -25,7 +25,6 @@ const Header = () => {
   };
 
   const handleSearchClick = async () => {
-    debugger
     const searchInput = inputRef.current.value;
     const searchData = await fetch(
       SEARCH_URL + `${searchInput}&key=${process.env.REACT_APP_YOUTUBE_API}`
@@ -78,6 +77,13 @@ const Header = () => {
                 setSearchQuery(ev.relatedTarget?.textContent.split("🔍 ")[1] || "");
                 handleSearchClick();
                 setShowSuggestions(false);
+              }}
+              onKeyDown={(ev) => {
+                if (ev.key === "Enter") {
+                  setSearchQuery(ev.target.value);
+                  handleSearchClick();
+                  setShowSuggestions(false);
+                }
               }}
             />
             <button
