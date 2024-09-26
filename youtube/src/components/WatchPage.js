@@ -10,7 +10,6 @@ import LiveChat from './LiveChat';
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get('v');
-  debugger
   const dispatch = useDispatch();
 
   const commentsDataFromUrl = async () => {

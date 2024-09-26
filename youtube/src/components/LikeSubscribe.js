@@ -8,6 +8,7 @@ import {
   SCISSOR_ICON,
   SHARE_ICON
 } from '../utils/constant';
+import { useSelector } from 'react-redux';
 
 const actions = [
   { icon: LIKE_ICON, label: 'Like', customClass: 'rounded-l-full w-20' },
@@ -27,6 +28,7 @@ const ActionButton = ({ icon, label, customClass = '' }) => (
 );
 
 const LikeSubscribe = () => {
+  const videData = useSelector((state) => state.app.videoData);
   return (
     <div className="youtube-video-details flex">
       <div className="title">Title</div>

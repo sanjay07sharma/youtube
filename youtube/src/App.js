@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainContainer from './components/MainContainer';
 import WatchPage from './components/WatchPage';
 import Subscriptions from './components/Subscriptions';
+import Channel from './components/Channel';
 
 const appRouter = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/watch',
         element: <WatchPage/>
+      },
+      {
+        path: '/channel',
+        element: <Channel/>
       }
     ],
   },
