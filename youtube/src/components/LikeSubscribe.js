@@ -27,8 +27,9 @@ const ActionButton = ({ icon, label, customClass = '' }) => (
   </button>
 );
 
-const LikeSubscribe = () => {
+const LikeSubscribe = (props) => {
   const videData = useSelector((state) => state.app.videoData);
+  // Now in props.data we have videoInformation now update the watch page.
   return (
     <div className="youtube-video-details flex">
       <div className="title">Title</div>

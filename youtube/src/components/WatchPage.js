@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { closeMenu } from '../utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import CommentContainer from './CommentContainer';
@@ -9,15 +9,17 @@ import LiveChat from './LiveChat';
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
+  const [videoInfo , setVideoInfo] = useState({});
+  const videData = useSelector((state) => state.app.videoData);
   const videoId = searchParams.get('v');
   const dispatch = useDispatch();
 
   const commentsDataFromUrl = async () => {
       const response = await fetch(COMMENT_API);
       const data = await response.json();
-      console.log(data);
   }
   useEffect(() => {
+    setVideoInfo(videData.find((video) => video.id === videoId));
     dispatch(closeMenu());
     commentsDataFromUrl();
   }, []);
@@ -32,12 +34,11 @@ const WatchPage = () => {
           allowFullScreen>
           </iframe>
           <div className=' w-[500px] h-[600px]'>
-              <LiveChat/>
+              {<LiveChat/> || <CommentContainer /> }
           </div>
       </div>
       <div>
-        <LikeSubscribe/>
-        <CommentContainer />
+        <LikeSubscribe data={videoInfo}/>
       </div>
     </div>
   )

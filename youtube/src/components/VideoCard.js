@@ -10,7 +10,7 @@ const VideoCard = (props) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4">
       {videData.map((video, key) => (
         <div>
-          <Link to={"/watch?v=" + video.id} key={key} className="block">
+          <Link to={"/watch?v=" + ((typeof(video.id) === "string") ? video.id : video.id.videoId)} key={key} className="block">
           <div className="w-full shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105">
             <div className="relative">
               <img

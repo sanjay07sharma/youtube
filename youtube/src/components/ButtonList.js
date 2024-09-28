@@ -4,7 +4,7 @@ const ButtonList = (props) => {
   function handleButtonClick(ev) {
     const buttonText = ev.target.textContent;
     document.querySelector('input').value = buttonText;
-    handleSearchClick()
+    handleSearchClick();
   }
   
   const categories = [
