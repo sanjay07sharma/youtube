@@ -26,6 +26,9 @@ const Header = () => {
 
   const handleSearchClick = async () => {
     const searchInput = inputRef.current.value;
+    if (searchInput === "") {
+      return;
+    }
     const searchData = await fetch(
       SEARCH_URL + `${searchInput}&key=${process.env.REACT_APP_YOUTUBE_API}`
     );

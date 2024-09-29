@@ -19,7 +19,7 @@ const WatchPage = () => {
       const data = await response.json();
   }
   useEffect(() => {
-    setVideoInfo(videData.find((video) => video.id === videoId));
+    setVideoInfo((typeof(videData) === "array") && videData?.find((video) => video.id === videoId));
     dispatch(closeMenu());
     commentsDataFromUrl();
   }, []);

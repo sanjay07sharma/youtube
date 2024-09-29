@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   DISLIKE_ICON,
   DOWNLOAD_ICON,
@@ -28,15 +28,23 @@ const ActionButton = ({ icon, label, customClass = '' }) => (
 );
 
 const LikeSubscribe = (props) => {
-  const videData = useSelector((state) => state.app.videoData);
-  // Now in props.data we have videoInformation now update the watch page.
+  const [showMore, setShowMore] = useState(false);
+ 
   return (
     <div className="youtube-video-details flex">
-      <div className="title">Title</div>
+      <div className="title">{props.data?.snippet?.title}</div>
       <div className="channel ml-9 flex items-center gap-4">
         <img src="" alt="Channel Logo" className="channel-logo" />
         <div className="channel-info">
-          <p>Channel Info</p>
+          <p className={`description ${showMore ? '' : 'line-clamp-3'}`}>
+            {props.data?.snippet?.description}
+          </p>
+          <button
+            className="text-blue-500"
+            onClick={() => setShowMore(!showMore)}
+          >
+            {showMore ? 'Show less' : 'Show more'}
+          </button>
           <div className="subscribers">subscribers</div>
         </div>
         <button className="subscribe rounded-full bg-black text-white w-36 h-10 mt-4">Subscribe</button>
