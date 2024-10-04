@@ -29,6 +29,7 @@ const ActionButton = ({ icon, label, customClass = '' }) => (
 
 const LikeSubscribe = (props) => {
   const [showMore, setShowMore] = useState(false);
+  debugger
  
   return (
     <div className="youtube-video-details flex">

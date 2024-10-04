@@ -19,11 +19,12 @@ const WatchPage = () => {
       const data = await response.json();
   }
   useEffect(() => {
-    setVideoInfo((typeof(videData) === "array") && videData?.find((video) => video.id === videoId));
+    setVideoInfo((typeof(videData) === "object") && videData?.find((video) => video.id === videoId));
     dispatch(closeMenu());
     commentsDataFromUrl();
   }, []);
-
+debugger
+// setVideoInfo((typeof(videData) === "array") && videData?.find((video) => video.id === videoId));
   return (
     <div className="flex flex-col w-screen">
       <div className='flex p-1 rounded-md'>
